@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+data/*.sqlite
+data/*.sqlite-journal
+data/*.sqlite-wal
+data/*.sqlite-shm
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+.DS_Store
