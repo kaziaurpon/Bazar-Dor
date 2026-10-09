@@ -1,0 +1,65 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Avatar } from "@/components/Navbar";
+import { toBn } from "@/lib/format";
+import { requireUser } from "@/lib/session";
+
+export const metadata: Metadata = { title: "আমার প্রোফাইল" };
+export const dynamic = "force-dynamic";
+
+function joinedDate(value: Date | string) {
+  const d = new Date(value);
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Dhaka",
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  }).formatToParts(d);
+  const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
+  return toBn(`${get("day")}/${get("month")}/${get("year")}`);
+}
+
+export default async function ProfilePage() {
+  const user = await requireUser("/profile");
+
+  return (
+    <div className="mx-auto max-w-2xl">
+      <h1 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">আমার প্রোফাইল</h1>
+      <p className="mt-1 text-sm text-slate-500">আপনার অ্যাকাউন্টের তথ্য দেখুন ও পরিবর্তন করুন।</p>
+
+      <section className="surface mt-5 flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex min-w-0 items-center gap-4">
+          <Avatar name={user.name} image={user.image} className="size-16 text-2xl" />
+          <div className="min-w-0">
+            <p className="truncate text-lg font-bold text-slate-900">{user.name}</p>
+            <p className="truncate text-sm text-slate-500">{user.email}</p>
+          </div>
+        </div>
+        <Link
+          href="/profile/update"
+          className="btn btn-outline btn-sm sm:btn-md border-rose-300 font-semibold text-rose-600 hover:border-rose-500 hover:bg-rose-50 hover:text-rose-700"
+        >
+          ✎ তথ্য আপডেট করুন
+        </Link>
+      </section>
+
+      <section className="surface mt-5 p-5">
+        <h2 className="text-base font-bold text-slate-900">তথ্য</h2>
+        <dl className="mt-4 divide-y divide-slate-100 text-sm">
+          <div className="flex flex-col gap-0.5 py-3 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">নাম</dt>
+            <dd className="font-semibold text-slate-900">{user.name}</dd>
+          </div>
+          <div className="flex flex-col gap-0.5 py-3 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">ইমেইল</dt>
+            <dd className="break-all font-semibold text-slate-900">{user.email}</dd>
+          </div>
+          <div className="flex flex-col gap-0.5 py-3 sm:flex-row sm:justify-between">
+            <dt className="text-slate-500">যোগদানের তারিখ</dt>
+            <dd className="font-semibold text-slate-900">{joinedDate(user.createdAt)}</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  );
+}
