@@ -50,11 +50,11 @@ export default function SocialButtons({ callbackURL = "/" }: { callbackURL?: str
     <div className="flex flex-col gap-2.5 sm:flex-row">
       <button type="button" className={base} onClick={() => handle("google")} disabled={busy !== null}>
         {busy === "google" ? <span className="loading loading-spinner loading-xs" /> : <GoogleIcon />}
-        Google দিয়ে চালিয়ে যান
+        <span>Google দিয়ে চালিয়ে যান</span>
       </button>
       <button type="button" className={base} onClick={() => handle("github")} disabled={busy !== null}>
         {busy === "github" ? <span className="loading loading-spinner loading-xs" /> : <GitHubIcon />}
-        GitHub দিয়ে চালিয়ে যান
+        <span>GitHub দিয়ে চালিয়ে যান</span>
       </button>
     </div>
   );

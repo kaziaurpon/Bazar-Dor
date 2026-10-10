@@ -95,7 +95,7 @@ export default function SignInForm() {
 
         <button type="submit" disabled={loading} className="btn btn-primary h-11 min-h-11 w-full text-base font-semibold shadow-sm">
           {loading && <span className="loading loading-spinner loading-sm" />}
-          {loading ? "সাইন ইন হচ্ছে..." : "সাইন ইন"}
+          <span>{loading ? "সাইন ইন হচ্ছে..." : "সাইন ইন"}</span>
         </button>
       </form>
 

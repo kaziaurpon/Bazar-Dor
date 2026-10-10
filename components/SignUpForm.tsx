@@ -113,7 +113,7 @@ export default function SignUpForm() {
 
         <button type="submit" disabled={loading} className="btn btn-primary h-11 min-h-11 w-full text-base font-semibold shadow-sm">
           {loading && <span className="loading loading-spinner loading-sm" />}
-          {loading ? "অ্যাকাউন্ট তৈরি হচ্ছে..." : "অ্যাকাউন্ট তৈরি করুন"}
+          <span>{loading ? "অ্যাকাউন্ট তৈরি হচ্ছে..." : "অ্যাকাউন্ট তৈরি করুন"}</span>
         </button>
       </form>
 

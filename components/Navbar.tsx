@@ -123,7 +123,7 @@ function UserMenu({ user }: { user: { name: string; email: string; image?: strin
               <path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3" />
               <path d="M16 8l4 4-4 4M20 12H9" />
             </svg>
-            {busy ? "সাইন আউট হচ্ছে..." : "সাইন আউট"}
+            <span>{busy ? "সাইন আউট হচ্ছে..." : "সাইন আউট"}</span>
           </button>
         </div>
       )}
