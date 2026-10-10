@@ -8,7 +8,6 @@ import {
   formatPrice,
   marketAvg,
   priceStats,
-  toBn,
   unitLabel,
   unitShort,
 } from "@/lib/format";
@@ -45,7 +44,7 @@ export default async function ProductPage({ params }: Params) {
   const unit = unitLabel(product.unit);
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <div className="mx-auto max-w-6xl">
       <nav aria-label="breadcrumb" className="mb-4 text-sm text-base-content/60">
         <ol className="flex flex-wrap items-center gap-1.5">
           <li>
@@ -110,21 +109,21 @@ export default async function ProductPage({ params }: Params) {
             <p className="text-xs text-base-content/60">সর্বনিম্ন দাম</p>
             <p className="mt-1 text-2xl font-extrabold text-success">{formatPrice(stats.min)}</p>
             <p className="mt-1 text-xs text-base-content/60">
-              {stats.lowest ? `সবচেয়ে কম দাম: ${stats.lowest.market}` : "সবচেয়ে কম দাম"}
+              সবচেয়ে কম দামের বাজার
             </p>
           </div>
           <div className="rounded-xl border border-base-300 bg-base-100 p-4">
-            <p className="text-xs text-base-content/60">সর্বোচ্চ দাম</p>
+            <p className="text-xs text-base-content/60">সর্বাধিক দাম</p>
             <p className="mt-1 text-2xl font-extrabold text-error">{formatPrice(stats.max)}</p>
             <p className="mt-1 text-xs text-base-content/60">
-              {stats.highest ? `সবচেয়ে বেশি দাম: ${stats.highest.market}` : "সবচেয়ে বেশি দাম"}
+              সবচেয়ে বেশি দামের বাজার
             </p>
           </div>
           <div className="rounded-xl border border-base-300 bg-base-100 p-4">
             <p className="text-xs text-base-content/60">গড় দাম</p>
             <p className="mt-1 text-2xl font-extrabold text-base-content">{formatPrice(stats.avg)}</p>
             <p className="mt-1 text-xs text-base-content/60">
-              {unit}, {toBn(product.markets.length)}টি বাজারের গড়
+              {unit}-এর হিসাবে
             </p>
           </div>
         </div>
@@ -146,7 +145,7 @@ export default async function ProductPage({ params }: Params) {
                     <th scope="col" className="px-4 py-3">বাজার</th>
                     <th scope="col" className="px-4 py-3">বিভাগ</th>
                     <th scope="col" className="px-4 py-3 text-right">সর্বনিম্ন</th>
-                    <th scope="col" className="px-4 py-3 text-right">সর্বোচ্চ</th>
+                    <th scope="col" className="px-4 py-3 text-right">সর্বাধিক</th>
                     <th scope="col" className="px-4 py-3 text-right">গড়</th>
                   </tr>
                 </thead>
@@ -181,7 +180,7 @@ export default async function ProductPage({ params }: Params) {
                   </div>
                   <div className="mt-2 flex justify-between text-xs">
                     <span className="text-base-content/60">সর্বনিম্ন <b className="text-success">{formatPrice(m.min)}</b></span>
-                    <span className="text-base-content/60">সর্বোচ্চ <b className="text-error">{formatPrice(m.max)}</b></span>
+                    <span className="text-base-content/60">সর্বাধিক <b className="text-error">{formatPrice(m.max)}</b></span>
                   </div>
                 </li>
               ))}
