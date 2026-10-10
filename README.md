@@ -9,6 +9,10 @@
 </div>
 
 ---
+## 🔗 Links
+
+- **Live Link:** https://bazar-dor-beryl-five.vercel.app
+- **GitHub Repository:** https://github.com/kaziaurpon/Bazar-Dor
 
 ## 📖 Description
 
