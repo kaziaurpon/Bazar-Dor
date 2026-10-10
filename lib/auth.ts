@@ -18,8 +18,6 @@ function createDatabase() {
     });
   }
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const Database = require("better-sqlite3");
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const path = require("node:path");
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const fs = require("node:fs");
@@ -30,6 +28,15 @@ function createDatabase() {
       ? "/tmp/bazardor-auth.sqlite"
       : path.join(process.cwd(), "data", "auth.sqlite"));
   fs.mkdirSync(path.dirname(file), { recursive: true });
+
+  // Preferred: Node's built-in SQLite (Node 22.5+, no native build needed).
+  const nodeSqlite = (process as unknown as { getBuiltinModule?: (id: string) => unknown })
+    .getBuiltinModule?.("node:sqlite") as { DatabaseSync: new (file: string) => never } | undefined;
+  if (nodeSqlite?.DatabaseSync) return new nodeSqlite.DatabaseSync(file);
+
+  // Fallback for older Node versions.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const Database = require("better-sqlite3");
   return new Database(file);
 }
 

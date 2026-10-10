@@ -40,7 +40,7 @@ browse by category, and (after signing in) compare prices of a product across 12
 
 ## 🚀 Run locally (VS Code)
 
-Requirements: **Node.js 20.9+** (22 LTS recommended) and npm.
+Requirements: **Node.js 22 LTS or newer** (uses Node's built-in SQLite – no native build tools needed) and npm.
 
 ```bash
 npm install
