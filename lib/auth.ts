@@ -46,6 +46,7 @@ const globalForAuth = globalThis as unknown as {
 const database = (globalForAuth.__bazardorDb ??= createDatabase());
 
 const trustedOrigins = [
+    "https://*.vercel.app",
   process.env.BETTER_AUTH_URL,
   process.env.NEXT_PUBLIC_APP_URL,
   process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`,
