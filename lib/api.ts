@@ -1,13 +1,24 @@
 import { cache } from "react";
-import { API_BASE, CATEGORIES } from "./constants";
+import { API_BASES, CATEGORIES } from "./constants";
 import type { Category, Product } from "./types";
 
 const REVALIDATE_SECONDS = 300;
 
 async function getJson<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, { next: { revalidate: REVALIDATE_SECONDS } });
-  if (!res.ok) throw new Error(`API request failed (${res.status}): ${path}`);
-  return (await res.json()) as T;
+  let lastError: unknown;
+  for (const base of API_BASES) {
+    try {
+      const res = await fetch(`${base}${path}`, {
+        next: { revalidate: REVALIDATE_SECONDS },
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (!res.ok) throw new Error(`API request failed (${res.status}): ${base}${path}`);
+      return (await res.json()) as T;
+    } catch (error) {
+      lastError = error; // try the next (alternative) API
+    }
+  }
+  throw lastError instanceof Error ? lastError : new Error("API request failed");
 }
 
 function pctChange(today: number, yesterday: number) {
