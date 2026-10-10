@@ -9,10 +9,7 @@ import { banglaDate } from "@/lib/format";
 import { signOut, useSession } from "@/lib/auth-client";
 import LogoMark from "./Logo";
 
-const NAV_ITEMS = [
-  { href: "/", label: "হোম", icon: "🏠" },
-  ...CATEGORIES.map((c) => ({ href: `/category/${c.slug}`, label: c.nameBn, icon: c.icon })),
-];
+const NAV_ITEMS = CATEGORIES.map((c) => ({ href: `/category/${c.slug}`, label: c.nameBn, icon: c.icon }));
 
 function initials(name?: string | null) {
   const trimmed = (name ?? "").trim();
