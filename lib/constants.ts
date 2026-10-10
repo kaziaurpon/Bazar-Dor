@@ -6,10 +6,10 @@ import type { Category } from "./types";
  */
 export const API_BASES: string[] = [
   process.env.BAZARDOR_API?.replace(/\/$/, ""),
+  "https://openapi.programming-hero.com/api/bazardor",
   "https://api.api-store.workers.dev/api/bazardor",
   "https://api.abcz.workers.dev/api/bazardor",
 ].filter((v, i, all): v is string => Boolean(v) && all.indexOf(v) === i);
-
 /** Static copy of the category list — used for the navbar and as an API fallback. */
 export const CATEGORIES: Category[] = [
   { id: "chal", slug: "chal", nameBn: "চাল", icon: "🍚" },
