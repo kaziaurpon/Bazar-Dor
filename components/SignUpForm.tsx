@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { authErrorMessage, signUp } from "@/lib/auth-client";
+import { authErrorMessage, signOut, signUp } from "@/lib/auth-client";
 import { EMAIL_RE } from "@/lib/validation";
 import PasswordInput from "./PasswordInput";
 import SocialButtons, { OrDivider } from "./SocialButtons";
@@ -42,6 +42,9 @@ export default function SignUpForm() {
         fail(authErrorMessage(authError));
         return;
       }
+      // Better Auth signs new users in automatically; the assignment wants them to
+      // log in themselves, so end that session and send them to the sign-in page.
+      await signOut().catch(() => undefined);
       toast.success("অ্যাকাউন্ট তৈরি হয়েছে! এখন সাইন ইন করুন।");
       router.push("/signin");
     } catch {
