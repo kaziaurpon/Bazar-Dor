@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="surface relative overflow-hidden bg-gradient-to-br from-white via-white to-brand-50 p-6 sm:p-8 md:p-10"
+      className="surface relative overflow-hidden bg-gradient-to-br from-white via-white to-brand-50 p-6 sm:p-8 md:h-[283px] md:px-10 md:py-0"
     >
       <div className="grid items-center gap-6 md:grid-cols-[1.15fr_1fr]">
         <div>
@@ -19,8 +19,8 @@ export default function Hero() {
             আজকের বাজারের দাম এক নজরে
           </h1>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-base-content/70 sm:text-base">
-            চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিশ্লেষণ, গত সপ্তাহের তুলনায়
-            পরিবর্তন এবং সহজ তুলনা এক জায়গায়।
+            চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক
+            এবং দামের পরিবর্তন এক জায়গায়।
           </p>
           <a href={`#${ALL_PRODUCTS_ANCHOR}`} className="btn btn-primary mt-6 px-6 font-semibold shadow-md">
             সব পণ্য দেখুন
@@ -33,7 +33,7 @@ export default function Hero() {
             alt="তাজা সবজি ও ফলে ভরা ঝুড়ি"
             width={315}
             height={263}
-            className="h-auto w-full max-w-[17rem] md:max-w-sm"
+            className="h-auto w-full max-w-[17rem] md:h-[263px] md:w-[315px] md:max-w-none"
           />
         </div>
       </div>

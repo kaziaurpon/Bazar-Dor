@@ -29,7 +29,7 @@ async function HomeSections() {
         <SectionHeading
           id="all-products"
           title="সব পণ্য"
-          subtitle={`সব ক্যাটাগরির মোট ${toBn(products.length)}টি পণ্যের আজকের দাম ও পরিবর্তন`}
+          subtitle={`মোট ${toBn(products.length)}টি পণ্য দেখানো হচ্ছে`}
         />
         <ProductGrid products={products} />
       </section>
