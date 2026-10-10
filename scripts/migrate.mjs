@@ -36,10 +36,8 @@ function createDatabase() {
     process.env.SQLITE_PATH ||
     (process.env.VERCEL ? "/tmp/bazardor-auth.sqlite" : path.join(process.cwd(), "data", "auth.sqlite"));
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  // Preferred: Node's built-in SQLite (Node 22.5+). Fallback: better-sqlite3 on older Node.
-  const builtin = process.getBuiltinModule?.("node:sqlite");
-  const db = builtin?.DatabaseSync ? new builtin.DatabaseSync(file) : new (require("better-sqlite3"))(file);
-  return { db, label: `SQLite (${file})` };
+  const { DatabaseSync } = process.getBuiltinModule("node:sqlite"); // Node 22.5+
+  return { db: new DatabaseSync(file), label: `SQLite (${file})` };
 }
 
 let handle;

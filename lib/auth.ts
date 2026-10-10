@@ -29,17 +29,13 @@ function createDatabase() {
       : path.join(process.cwd(), "data", "auth.sqlite"));
   fs.mkdirSync(path.dirname(file), { recursive: true });
 
-  // Preferred: Node's built-in SQLite (Node 22.5+, no native build needed).
+  // Node's built-in SQLite (Node 22.5+) — no native module to compile.
   const nodeSqlite = (process as unknown as { getBuiltinModule?: (id: string) => unknown })
     .getBuiltinModule?.("node:sqlite") as { DatabaseSync: new (file: string) => never } | undefined;
-  if (nodeSqlite?.DatabaseSync) return new nodeSqlite.DatabaseSync(file);
-
-  // Fallback for older Node versions (optional dependency). It is loaded through
-  // createRequire so the bundler does not try to resolve it when it is not installed.
-  const { createRequire } = (process as unknown as { getBuiltinModule: (id: string) => typeof import("node:module") })
-    .getBuiltinModule("node:module");
-  const Database = createRequire(path.join(process.cwd(), "package.json"))("better-sqlite3");
-  return new Database(file);
+  if (!nodeSqlite?.DatabaseSync) {
+    throw new Error("Node.js 22.5 or newer is required (built-in SQLite). Please install the Node.js LTS version.");
+  }
+  return new nodeSqlite.DatabaseSync(file);
 }
 
 const globalForAuth = globalThis as unknown as {

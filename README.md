@@ -38,17 +38,34 @@ browse by category, and (after signing in) compare prices of a product across 12
 6. **Profile & update information** – view your profile and change your name through Better Auth's `updateUser`.
 7. **Fully responsive** – mobile, tablet and desktop; custom 404 page; no hard 404 when reloading dynamic routes.
 
-## 🚀 Run locally (VS Code)
+## 🚀 Run locally (VS Code / Git Bash / Windows)
 
-Requirements: **Node.js 22 LTS or newer** (uses Node's built-in SQLite – no native build tools needed) and npm.
+Requirements: **Node.js 22 LTS or newer** (<https://nodejs.org>) — it uses Node's built-in SQLite, so no build tools are needed.
+
+**1. Extract the zip into its own folder** (Windows: right-click → *Extract All…*, or in Git Bash):
+
+```bash
+mkdir -p bazardor && unzip -o bazardor.zip -d bazardor
+cd bazardor
+ls package.json        # must print: package.json
+```
+
+**2. Install and run**
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open <http://localhost:3000>. A `.env.local` file is already included; the SQLite database
-(`data/auth.sqlite`) and its tables are created automatically on the first run.
+Open <http://localhost:3000>.
+
+**Shortcuts** (they install the packages on the first run and then start the app):
+
+- Windows: double-click `start.bat`
+- Git Bash / macOS / Linux: `bash start.sh`
+
+A `.env.local` file is already included; the SQLite database (`data/auth.sqlite`) and its tables are
+created automatically on the first run.
 
 Production check:
 
