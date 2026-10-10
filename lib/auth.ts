@@ -34,9 +34,11 @@ function createDatabase() {
     .getBuiltinModule?.("node:sqlite") as { DatabaseSync: new (file: string) => never } | undefined;
   if (nodeSqlite?.DatabaseSync) return new nodeSqlite.DatabaseSync(file);
 
-  // Fallback for older Node versions.
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const Database = require("better-sqlite3");
+  // Fallback for older Node versions (optional dependency). It is loaded through
+  // createRequire so the bundler does not try to resolve it when it is not installed.
+  const { createRequire } = (process as unknown as { getBuiltinModule: (id: string) => typeof import("node:module") })
+    .getBuiltinModule("node:module");
+  const Database = createRequire(path.join(process.cwd(), "package.json"))("better-sqlite3");
   return new Database(file);
 }
 
