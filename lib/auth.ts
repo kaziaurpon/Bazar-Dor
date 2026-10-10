@@ -1,5 +1,5 @@
 import { betterAuth } from "better-auth";
-import { getMigrations } from "better-auth/db";
+import { getMigrations } from "better-auth/db/migration";
 import { nextCookies } from "better-auth/next-js";
 import { Pool } from "pg";
 
@@ -23,7 +23,12 @@ function createDatabase() {
   const path = require("node:path");
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const fs = require("node:fs");
-  const file = process.env.SQLITE_PATH || path.join(process.cwd(), "data", "auth.sqlite");
+  // On Vercel only /tmp is writable (data there is NOT permanent — set DATABASE_URL for real use).
+  const file =
+    process.env.SQLITE_PATH ||
+    (process.env.VERCEL
+      ? "/tmp/bazardor-auth.sqlite"
+      : path.join(process.cwd(), "data", "auth.sqlite"));
   fs.mkdirSync(path.dirname(file), { recursive: true });
   return new Database(file);
 }
@@ -54,8 +59,6 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 6,
-    // After sign-up the user is sent to the sign-in page (no auto login).
-    autoSignIn: false,
   },
   socialProviders: {
     ...(googleConfigured && {
