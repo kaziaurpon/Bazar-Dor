@@ -17,8 +17,8 @@ export default function StateMessage({
   return (
     <div className="surface mx-auto flex max-w-lg flex-col items-center px-6 py-14 text-center">
       <p className="text-6xl font-extrabold tracking-tight text-brand-600">{code}</p>
-      <h1 className="mt-3 text-xl font-bold text-slate-900 sm:text-2xl">{title}</h1>
-      <p className="mt-2 text-sm text-slate-500 sm:text-base">{message}</p>
+      <h1 className="mt-3 text-xl font-bold text-base-content sm:text-2xl">{title}</h1>
+      <p className="mt-2 text-sm text-base-content/60 sm:text-base">{message}</p>
       <Link href={ctaHref} className="btn btn-primary mt-6 font-semibold">
         {ctaLabel}
       </Link>

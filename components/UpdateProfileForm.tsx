@@ -51,7 +51,7 @@ export default function UpdateProfileForm({
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-4">
       <div>
-        <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-slate-700">
+        <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-base-content/80">
           নাম
         </label>
         <input
@@ -65,8 +65,8 @@ export default function UpdateProfileForm({
         />
       </div>
       <div>
-        <label htmlFor="image" className="mb-1.5 block text-sm font-semibold text-slate-700">
-          ছবির লিঙ্ক <span className="font-normal text-slate-400">(ঐচ্ছিক)</span>
+        <label htmlFor="image" className="mb-1.5 block text-sm font-semibold text-base-content/80">
+          ছবির লিঙ্ক <span className="font-normal text-base-content/45">(ঐচ্ছিক)</span>
         </label>
         <input
           id="image"
@@ -80,7 +80,7 @@ export default function UpdateProfileForm({
       </div>
 
       {error && (
-        <p role="alert" className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-600">
+        <p role="alert" className="rounded-lg bg-error/10 px-3 py-2 text-sm text-error">
           {error}
         </p>
       )}

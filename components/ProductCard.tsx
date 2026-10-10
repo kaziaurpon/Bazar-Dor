@@ -11,20 +11,20 @@ export default function ProductCard({ product }: { product: Product }) {
     >
       <div className="flex items-center gap-3">
         <span
-          className="grid size-12 shrink-0 place-items-center rounded-xl bg-slate-100 text-2xl transition group-hover:bg-brand-50"
+          className="grid size-12 shrink-0 place-items-center rounded-xl bg-base-200 text-2xl transition group-hover:bg-brand-50"
           aria-hidden="true"
         >
           {product.image}
         </span>
         <div className="min-w-0">
-          <h3 className="break-words font-bold leading-snug text-slate-900">{product.nameBn}</h3>
-          <p className="text-xs text-slate-500">{unitLabel(product.unit)}</p>
+          <h3 className="break-words font-bold leading-snug text-base-content">{product.nameBn}</h3>
+          <p className="text-xs text-base-content/60">{unitLabel(product.unit)}</p>
         </div>
       </div>
       <div className="mt-4 flex items-end justify-between gap-2">
         <div>
-          <p className="text-xs text-slate-500">আজকের দাম</p>
-          <p className="text-lg font-extrabold text-slate-900">{formatPrice(product.today)}</p>
+          <p className="text-xs text-base-content/60">আজকের দাম</p>
+          <p className="text-lg font-extrabold text-base-content">{formatPrice(product.today)}</p>
         </div>
         <ChangeBadge dir={product.change.dir} pct={product.change.pct} />
       </div>

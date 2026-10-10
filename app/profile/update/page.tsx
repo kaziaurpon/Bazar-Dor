@@ -11,15 +11,15 @@ export default async function UpdateProfilePage() {
 
   return (
     <div className="mx-auto max-w-xl">
-      <h1 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">তথ্য আপডেট করুন</h1>
-      <p className="mt-1 text-sm text-slate-500">আপনার নাম পরিবর্তন করে সেভ করুন।</p>
+      <h1 className="text-2xl font-extrabold text-base-content sm:text-3xl">তথ্য আপডেট করুন</h1>
+      <p className="mt-1 text-sm text-base-content/60">আপনার নাম পরিবর্তন করে সেভ করুন।</p>
 
       <section className="surface mt-5 p-5 sm:p-6">
         <UpdateProfileForm initialName={user.name} initialImage={user.image ?? ""} />
       </section>
 
       <p className="mt-5 text-sm">
-        <Link href="/profile" className="text-slate-500 hover:text-brand-700 hover:underline">
+        <Link href="/profile" className="text-base-content/60 hover:text-brand-700 hover:underline">
           ← প্রোফাইলে ফিরে যান
         </Link>
       </p>

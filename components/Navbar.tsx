@@ -85,11 +85,11 @@ function UserMenu({ user }: { user: { name: string; email: string; image?: strin
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition hover:bg-slate-100"
+        className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition hover:bg-base-200"
       >
         <Avatar name={user.name} image={user.image} />
-        <span className="hidden max-w-[9rem] truncate text-sm font-semibold text-slate-800 sm:inline">{user.name}</span>
-        <svg viewBox="0 0 20 20" className={`size-3.5 text-slate-400 transition ${open ? "rotate-180" : ""}`} fill="currentColor" aria-hidden="true">
+        <span className="hidden max-w-[9rem] truncate text-sm font-semibold text-base-content sm:inline">{user.name}</span>
+        <svg viewBox="0 0 20 20" className={`size-3.5 text-base-content/45 transition ${open ? "rotate-180" : ""}`} fill="currentColor" aria-hidden="true">
           <path d="M5.5 7.5 10 12l4.5-4.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
@@ -97,16 +97,16 @@ function UserMenu({ user }: { user: { name: string; email: string; image?: strin
       {open && (
         <div role="menu" className="surface absolute right-0 z-50 mt-2 w-64 p-3 shadow-xl">
           <div className="px-2 pb-2">
-            <p className="truncate text-sm font-bold text-slate-900">{user.name}</p>
-            <p className="truncate text-xs text-slate-500">{user.email}</p>
+            <p className="truncate text-sm font-bold text-base-content">{user.name}</p>
+            <p className="truncate text-xs text-base-content/60">{user.email}</p>
           </div>
-          <div className="my-1 border-t border-slate-100" />
+          <div className="my-1 border-t border-base-300/60" />
           <Link
             href="/profile"
             role="menuitem"
-            className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-700 hover:bg-slate-50"
+            className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-base-content/80 hover:bg-base-200/70"
           >
-            <svg viewBox="0 0 24 24" className="size-4 text-slate-500" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="size-4 text-base-content/60" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <circle cx="12" cy="8" r="3.6" />
               <path d="M4.5 20c.8-3.6 3.8-5.5 7.5-5.5s6.7 1.9 7.5 5.5" />
             </svg>
@@ -117,7 +117,7 @@ function UserMenu({ user }: { user: { name: string; email: string; image?: strin
             role="menuitem"
             onClick={handleSignOut}
             disabled={busy}
-            className="flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-sm font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-60"
+            className="flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-sm font-medium text-error hover:bg-error/10 disabled:opacity-60"
           >
             <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3" />
@@ -142,7 +142,7 @@ function AuthArea() {
   }
   return (
     <div className="flex items-center gap-1.5 sm:gap-2">
-      <Link href="/signin" className="btn btn-ghost btn-sm sm:btn-md font-semibold text-slate-800">
+      <Link href="/signin" className="btn btn-ghost btn-sm sm:btn-md font-semibold text-base-content">
         সাইন ইন
       </Link>
       <Link href="/signup" className="btn btn-primary btn-sm sm:btn-md font-semibold shadow-sm">
@@ -159,14 +159,14 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="border-b border-slate-200/80 bg-white">
+    <header className="border-b border-base-300 bg-base-100">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex items-center justify-between gap-3 py-3">
           <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="বাজার দর — হোম পেজ">
             <LogoMark />
             <span className="min-w-0 leading-tight">
-              <span className="block text-lg font-extrabold text-slate-900">বাজার দর</span>
-              <span className="block truncate text-[11px] text-slate-500 sm:text-xs" suppressHydrationWarning>
+              <span className="block text-lg font-extrabold text-base-content">বাজার দর</span>
+              <span className="block truncate text-[11px] text-base-content/60 sm:text-xs" suppressHydrationWarning>
                 {banglaDate()}
               </span>
             </span>
@@ -186,7 +186,7 @@ export default function Navbar() {
                     className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-1.5 font-medium transition ${
                       active
                         ? "bg-brand-600 text-white shadow-sm"
-                        : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                        : "text-base-content/70 hover:bg-base-200 hover:text-base-content"
                     }`}
                   >
                     <span aria-hidden="true" className="text-[13px] leading-none">{item.icon}</span>

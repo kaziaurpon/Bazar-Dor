@@ -59,9 +59,9 @@ export const unitShort = (unit: string) => UNIT_SHORT[unit] ?? unit;
 /** Tailwind classes for a change direction (see PRICE_UP_IS_RED). */
 export function changeTone(dir: ChangeDir) {
   if (dir === "flat")
-    return { text: "text-slate-500", badge: "bg-slate-100 text-slate-600" };
-  const bad = { text: "text-rose-600", badge: "bg-rose-50 text-rose-600" };
-  const good = { text: "text-emerald-600", badge: "bg-emerald-50 text-emerald-600" };
+    return { text: "text-base-content/60", badge: "bg-base-200 text-base-content/70" };
+  const bad = { text: "text-error", badge: "bg-error/10 text-error" };
+  const good = { text: "text-success", badge: "bg-success/10 text-success" };
   const isUp = dir === "up";
   return isUp === PRICE_UP_IS_RED ? bad : good;
 }

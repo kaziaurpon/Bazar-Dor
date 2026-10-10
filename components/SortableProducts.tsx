@@ -38,7 +38,7 @@ export default function SortableProducts({ products }: { products: Product[] }) 
   return (
     <>
       <div className="surface mt-4 flex items-center justify-end gap-3 p-3 sm:p-4">
-        <label htmlFor="sort" className="text-sm font-medium text-slate-600">
+        <label htmlFor="sort" className="text-sm font-medium text-base-content/70">
           সাজান:
         </label>
         <div className="relative">
@@ -46,7 +46,7 @@ export default function SortableProducts({ products }: { products: Product[] }) 
             id="sort"
             value={sort}
             onChange={(e) => setSort(e.target.value as SortKey)}
-            className="h-10 min-w-40 cursor-pointer appearance-none rounded-lg border border-slate-300 bg-white py-0 pl-3 pr-9 text-sm font-medium text-slate-800 outline-none transition hover:border-slate-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
+            className="h-10 min-w-40 cursor-pointer appearance-none rounded-lg border border-base-300 bg-base-100 py-0 pl-3 pr-9 text-sm font-medium text-base-content outline-none transition hover:border-base-content/30 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20"
           >
             {OPTIONS.map((o) => (
               <option key={o.value} value={o.value}>
@@ -56,7 +56,7 @@ export default function SortableProducts({ products }: { products: Product[] }) 
           </select>
           <svg
             viewBox="0 0 20 20"
-            className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-slate-500"
+            className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-base-content/60"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -69,7 +69,7 @@ export default function SortableProducts({ products }: { products: Product[] }) 
         </div>
       </div>
 
-      <p className="mb-3 mt-4 text-sm text-slate-500" aria-live="polite">
+      <p className="mb-3 mt-4 text-sm text-base-content/60" aria-live="polite">
         মোট {toBn(sorted.length)}টি পণ্য দেখানো হচ্ছে
       </p>
       <ProductGrid products={sorted} />

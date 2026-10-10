@@ -13,11 +13,11 @@ export default function ToasterProvider() {
           fontFamily: "inherit",
           fontSize: "0.95rem",
           borderRadius: "0.75rem",
-          border: "1px solid #e2e8f0",
+          border: "1px solid #e1e8e1",
           boxShadow: "0 10px 30px -12px rgb(15 23 42 / 0.25)",
         },
-        success: { iconTheme: { primary: "#0a8a3c", secondary: "#fff" } },
-        error: { iconTheme: { primary: "#e11d48", secondary: "#fff" } },
+        success: { iconTheme: { primary: "#05893e", secondary: "#fff" } },
+        error: { iconTheme: { primary: "#d03739", secondary: "#fff" } },
       }}
     />
   );

@@ -8,10 +8,10 @@ function TickerRow({ products, hidden = false }: { products: Product[]; hidden?:
       {products.map((p) => (
         <li
           key={p.id}
-          className="flex items-center gap-1.5 whitespace-nowrap border-r border-slate-200 px-5 text-[13px] text-slate-700"
+          className="flex items-center gap-1.5 whitespace-nowrap border-r border-base-300 px-5 text-[13px] text-base-content/80"
         >
           <span aria-hidden="true">{p.image}</span>
-          <span className="font-semibold text-slate-900">{p.nameBn}</span>
+          <span className="font-semibold text-base-content">{p.nameBn}</span>
           <span>
             {formatNumber(p.today)} টাকা/{unitShort(p.unit)}
           </span>
@@ -34,7 +34,7 @@ export default async function Ticker() {
   if (!products.length) return null;
 
   return (
-    <div className="ticker overflow-hidden border-b border-slate-200/80 bg-white/70 py-2" aria-label="আজকের দামের তালিকা">
+    <div className="ticker overflow-hidden border-b border-base-300 bg-base-100/70 py-2" aria-label="আজকের দামের তালিকা">
       <div className="ticker-track">
         <TickerRow products={products} />
         <TickerRow products={products} hidden />
@@ -45,7 +45,7 @@ export default async function Ticker() {
 
 export function TickerSkeleton() {
   return (
-    <div className="border-b border-slate-200/80 bg-white/70 py-2" aria-hidden="true">
+    <div className="border-b border-base-300 bg-base-100/70 py-2" aria-hidden="true">
       <div className="skeleton mx-4 h-5 rounded-full" />
     </div>
   );

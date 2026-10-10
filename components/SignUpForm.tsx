@@ -54,7 +54,7 @@ export default function SignUpForm() {
     }
   }
 
-  const label = "mb-1.5 block text-sm font-semibold text-slate-700";
+  const label = "mb-1.5 block text-sm font-semibold text-base-content/80";
 
   return (
     <>
@@ -106,7 +106,7 @@ export default function SignUpForm() {
         </div>
 
         {error && (
-          <p role="alert" className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-600">
+          <p role="alert" className="rounded-lg bg-error/10 px-3 py-2 text-sm text-error">
             {error}
           </p>
         )}
@@ -120,7 +120,7 @@ export default function SignUpForm() {
       <OrDivider />
       <SocialButtons callbackURL="/" />
 
-      <p className="mt-5 text-center text-sm text-slate-600">
+      <p className="mt-5 text-center text-sm text-base-content/70">
         অ্যাকাউন্ট আছে?{" "}
         <Link href="/signin" className="font-semibold text-brand-700 hover:underline">
           সাইন ইন করুন

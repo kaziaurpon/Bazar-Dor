@@ -44,7 +44,7 @@ export default function SocialButtons({ callbackURL = "/" }: { callbackURL?: str
   }
 
   const base =
-    "btn btn-outline h-11 min-h-11 flex-1 gap-2 border-slate-300 bg-white px-3 text-[13px] font-semibold text-slate-800 hover:border-slate-400 hover:bg-slate-50 sm:text-sm";
+    "btn btn-outline h-11 min-h-11 flex-1 gap-2 border-base-300 bg-base-100 px-3 text-[13px] font-semibold text-base-content hover:border-base-content/30 hover:bg-base-200/70 sm:text-sm";
 
   return (
     <div className="flex flex-col gap-2.5 sm:flex-row">
@@ -62,10 +62,10 @@ export default function SocialButtons({ callbackURL = "/" }: { callbackURL?: str
 
 export function OrDivider() {
   return (
-    <div className="my-5 flex items-center gap-3 text-xs text-slate-400" aria-hidden="true">
-      <span className="h-px flex-1 bg-slate-200" />
+    <div className="my-5 flex items-center gap-3 text-xs text-base-content/45" aria-hidden="true">
+      <span className="h-px flex-1 bg-base-300" />
       অথবা
-      <span className="h-px flex-1 bg-slate-200" />
+      <span className="h-px flex-1 bg-base-300" />
     </div>
   );
 }

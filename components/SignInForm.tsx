@@ -60,7 +60,7 @@ export default function SignInForm() {
     <>
       <form onSubmit={onSubmit} noValidate className="space-y-4">
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-slate-700">
+          <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-base-content/80">
             ইমেইল
           </label>
           <input
@@ -75,7 +75,7 @@ export default function SignInForm() {
           />
         </div>
         <div>
-          <label htmlFor="password" className="mb-1.5 block text-sm font-semibold text-slate-700">
+          <label htmlFor="password" className="mb-1.5 block text-sm font-semibold text-base-content/80">
             পাসওয়ার্ড
           </label>
           <PasswordInput
@@ -88,7 +88,7 @@ export default function SignInForm() {
         </div>
 
         {error && (
-          <p role="alert" className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-600">
+          <p role="alert" className="rounded-lg bg-error/10 px-3 py-2 text-sm text-error">
             {error}
           </p>
         )}
@@ -102,7 +102,7 @@ export default function SignInForm() {
       <OrDivider />
       <SocialButtons callbackURL={callbackURL} />
 
-      <p className="mt-5 text-center text-sm text-slate-600">
+      <p className="mt-5 text-center text-sm text-base-content/70">
         অ্যাকাউন্ট নেই?{" "}
         <Link href="/signup" className="font-semibold text-brand-700 hover:underline">
           সাইন আপ করুন

@@ -25,15 +25,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 function CategoryHeader({ category, count }: { category: Category; count?: number }) {
   return (
     <header className="surface flex items-center gap-4 p-5 sm:p-6">
-      <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-slate-100 text-3xl" aria-hidden="true">
+      <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-base-200 text-3xl" aria-hidden="true">
         {category.icon}
       </span>
       <div className="min-w-0">
-        <h1 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">{category.nameBn}</h1>
+        <h1 className="text-2xl font-extrabold text-base-content sm:text-3xl">{category.nameBn}</h1>
         {count === undefined ? (
           <div className="skeleton mt-2 h-4 w-52" />
         ) : (
-          <p className="text-sm text-slate-500">{toBn(count)}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
+          <p className="text-sm text-base-content/60">{toBn(count)}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
         )}
       </div>
     </header>

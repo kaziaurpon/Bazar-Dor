@@ -12,12 +12,12 @@ export default function AuthShell({
   return (
     <div className="mx-auto w-full max-w-md py-4 sm:py-8">
       <div className="mb-5 text-center">
-        <h1 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">{title}</h1>
-        <p className="mt-1 text-sm text-slate-500">{subtitle}</p>
+        <h1 className="text-2xl font-extrabold text-base-content sm:text-3xl">{title}</h1>
+        <p className="mt-1 text-sm text-base-content/60">{subtitle}</p>
       </div>
       <div className="surface p-5 sm:p-7">{children}</div>
       <p className="mt-6 text-center text-sm">
-        <Link href="/" className="text-slate-500 hover:text-brand-700 hover:underline">
+        <Link href="/" className="text-base-content/60 hover:text-brand-700 hover:underline">
           ← হোম পেজে ফিরে যান
         </Link>
       </p>

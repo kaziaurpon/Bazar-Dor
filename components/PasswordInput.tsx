@@ -30,7 +30,7 @@ export default function PasswordInput({
       <button
         type="button"
         onClick={() => setShow((s) => !s)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-500 hover:text-brand-700"
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-base-content/60 hover:text-brand-700"
         aria-label={show ? "পাসওয়ার্ড লুকান" : "পাসওয়ার্ড দেখুন"}
       >
         {show ? "লুকান" : "দেখুন"}

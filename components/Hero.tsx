@@ -1,6 +1,5 @@
 import { ALL_PRODUCTS_ANCHOR } from "@/lib/constants";
 import { banglaDate } from "@/lib/format";
-import HeroIllustration from "./HeroIllustration";
 
 export default function Hero() {
   return (
@@ -15,11 +14,11 @@ export default function Hero() {
           </p>
           <h1
             id="hero-title"
-            className="mt-4 text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl md:text-[2.6rem]"
+            className="mt-4 text-3xl font-extrabold leading-tight text-base-content sm:text-4xl md:text-[2.6rem]"
           >
             আজকের বাজারের দাম এক নজরে
           </h1>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-base-content/70 sm:text-base">
             চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিশ্লেষণ, গত সপ্তাহের তুলনায়
             পরিবর্তন এবং সহজ তুলনা এক জায়গায়।
           </p>
@@ -28,7 +27,14 @@ export default function Hero() {
           </a>
         </div>
         <div className="flex justify-center md:justify-end">
-          <HeroIllustration className="w-full max-w-[19rem] md:max-w-sm" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/bazar-hero.png"
+            alt="তাজা সবজি ও ফলে ভরা ঝুড়ি"
+            width={315}
+            height={263}
+            className="h-auto w-full max-w-[17rem] md:max-w-sm"
+          />
         </div>
       </div>
     </section>
