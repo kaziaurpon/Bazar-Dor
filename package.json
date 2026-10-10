@@ -4,9 +4,10 @@
   "private": true,
   "description": "বাজার দর (BazarDor) — প্রয়োজনীয় পণ্যের দাম এক নজরে",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node scripts/migrate.mjs && next dev",
+    "build": "node scripts/migrate.mjs && next build",
+    "start": "node scripts/migrate.mjs && next start",
+    "db:migrate": "node scripts/migrate.mjs",
     "typecheck": "tsc --noEmit"
   },
   "engines": {
@@ -14,15 +15,13 @@
   },
   "dependencies": {
     "better-auth": "^1.7.7",
+    "better-sqlite3": "^13.0.3",
     "next": "^16.4.0",
     "pg": "^8.23.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-hot-toast": "^2.6.1",
     "server-only": "^0.0.1"
-  },
-  "optionalDependencies": {
-    "better-sqlite3": "^13.0.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
