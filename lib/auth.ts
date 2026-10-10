@@ -65,6 +65,12 @@ export const auth = betterAuth({
     enabled: true,
     minPasswordLength: 6,
   },
+  account: {
+  accountLinking: {
+    enabled: true,
+    trustedProviders: ["google", "github"],
+  },
+},
   socialProviders: {
     ...(googleConfigured && {
       google: {
