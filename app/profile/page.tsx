@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Avatar } from "@/components/Navbar";
 import { toBn } from "@/lib/format";
 import { requireUser } from "@/lib/session";
+import SignOutButton from "@/components/SignOutButton";
 
 export const metadata: Metadata = { title: "আমার প্রোফাইল" };
 export const dynamic = "force-dynamic";
@@ -35,12 +36,7 @@ export default async function ProfilePage() {
             <p className="truncate text-sm text-base-content/60">{user.email}</p>
           </div>
         </div>
-        <Link
-          href="/profile/update"
-          className="btn btn-outline btn-sm sm:btn-md border-error/40 font-semibold text-error hover:border-error hover:bg-error/10 hover:text-error"
-        >
-          ✎ তথ্য আপডেট করুন
-        </Link>
+        <SignOutButton />
       </section>
 
       <section className="surface mt-5 p-5">
@@ -59,6 +55,9 @@ export default async function ProfilePage() {
             <dd className="font-semibold text-base-content">{joinedDate(user.createdAt)}</dd>
           </div>
         </dl>
+        <Link href="/profile/update" className="btn btn-primary mt-4 h-11 min-h-11 w-full font-semibold shadow-sm">
+          আপডেট
+        </Link>
       </section>
     </div>
   );
