@@ -163,7 +163,7 @@ export default function Navbar() {
             <LogoMark />
             <span className="min-w-0">
   <span className="block text-[18px] font-bold leading-7 tracking-[-0.5px] text-base-content sm:text-[20px]">বাজার দর</span>
-  <span className="block truncate text-[11px] leading-4 text-base-content/60 sm:text-xs" suppressHydrationWarning>
+  <span className="block truncate text-[11px] leading-4 text-base-content/70 sm:text-xs" suppressHydrationWarning>
                 {banglaDate()}
               </span>
             </span>
@@ -183,7 +183,7 @@ export default function Navbar() {
                     className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-1.5 font-medium transition ${
                       active
                         ? "bg-brand-600 text-white shadow-sm"
-                        : "text-base-content/70 hover:bg-base-200 hover:text-base-content"
+                        : "text-base-content/80 hover:bg-base-200 hover:text-base-content"
                     }`}
                   >
                     <span aria-hidden="true" className="text-[13px] leading-none">{item.icon}</span>
