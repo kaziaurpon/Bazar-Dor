@@ -5,7 +5,7 @@ export default function LogoMark({ className = "size-10" }: { className?: string
       aria-hidden="true"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo-icon.png" alt="" width={18} height={18} className="size-[48%] brightness-0 invert" />
+      <img src="/logo-icon.png" alt="" width={18} height={18} className="size-[18px] brightness-0 invert" />
     </span>
   );
 }

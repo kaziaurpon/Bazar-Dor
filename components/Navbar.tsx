@@ -161,9 +161,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between gap-3 py-3">
           <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="বাজার দর — হোম পেজ">
             <LogoMark />
-            <span className="min-w-0 leading-tight">
-              <span className="block text-lg font-extrabold text-base-content">বাজার দর</span>
-              <span className="block truncate text-[11px] text-base-content/60 sm:text-xs" suppressHydrationWarning>
+            <span className="min-w-0">
+  <span className="block text-[18px] font-bold leading-7 tracking-[-0.5px] text-base-content sm:text-[20px]">বাজার দর</span>
+  <span className="block truncate text-[11px] leading-4 text-base-content/60 sm:text-xs" suppressHydrationWarning>
                 {banglaDate()}
               </span>
             </span>
