@@ -163,7 +163,7 @@ export default function Navbar() {
             <LogoMark />
             <span className="min-w-0">
   <span className="block text-[18px] font-bold leading-7 tracking-[-0.5px] text-base-content sm:text-[20px]">বাজার দর</span>
-  <span className="block truncate text-[11px] leading-4 text-base-content/70 sm:text-xs" suppressHydrationWarning>
+  <span className="block truncate text-[11px] leading-4 text-base-content/90 sm:text-xs" suppressHydrationWarning>
                 {banglaDate()}
               </span>
             </span>
