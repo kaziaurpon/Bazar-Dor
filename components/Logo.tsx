@@ -8,7 +8,7 @@ export default function LogoMark({ className = "size-10" }: { className?: string
       className={`grid shrink-0 place-items-center rounded-xl bg-primary ${className}`}
       aria-hidden="true"
     >
-      <span className="text-[18px] leading-none">🛒</span>
+      <span className="text-[18px] leading-none brightness-0 invert">🛒</span>
     </span>
   );
 }
