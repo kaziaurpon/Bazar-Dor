@@ -25,13 +25,23 @@ export function Avatar({
   image?: string | null;
   className?: string;
 }) {
-  if (image) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={image} alt={name ?? "প্রোফাইল"} referrerPolicy="no-referrer" className={`${className} rounded-full object-cover`} />;
-  }
   return (
-    <span className={`${className} grid place-items-center rounded-full bg-brand-100 font-bold text-brand-700`} aria-hidden="true">
+    <span
+      className={`${className} relative grid shrink-0 place-items-center overflow-hidden rounded-full bg-brand-100 font-bold text-brand-700`}
+      aria-hidden={image ? undefined : true}
+    >
       {initials(name)}
+      {image && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={image}
+          alt={name ?? "প্রোফাইল"}
+          referrerPolicy="no-referrer"
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 size-full rounded-full object-cover"
+        />
+      )}
     </span>
   );
 }
@@ -128,14 +138,20 @@ function UserMenu({ user }: { user: { name: string; email: string; image?: strin
   );
 }
 
-function AuthArea() {
+type NavUser = { name: string; email: string; image?: string | null };
+
+function AuthArea({ initialUser }: { initialUser?: NavUser | null }) {
   const { data, isPending } = useSession();
 
-  if (isPending) {
+  // The server already knows who is signed in, so show that immediately and
+  // only use the client session once it has loaded (no waiting for a request).
+  const hasInitial = initialUser !== undefined;
+  if (isPending && !hasInitial) {
     return <div className="skeleton h-9 w-28 rounded-full sm:w-40" aria-label="লোড হচ্ছে" />;
   }
-  if (data?.user) {
-    return <UserMenu user={data.user} />;
+  const user = isPending ? initialUser : data?.user;
+  if (user) {
+    return <UserMenu user={user} />;
   }
   return (
     <div className="flex items-center gap-1.5 sm:gap-2">
@@ -149,7 +165,7 @@ function AuthArea() {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ initialUser }: { initialUser?: NavUser | null }) {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
@@ -162,13 +178,13 @@ export default function Navbar() {
           <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="বাজার দর — হোম পেজ">
             <LogoMark />
             <span className="min-w-0">
-  <span className="block text-[18px] font-bold leading-7 tracking-[-0.5px] text-base-content sm:text-[20px]">বাজার দর</span>
-  <span className="block truncate text-[11px] leading-4 text-base-content/90 sm:text-xs" suppressHydrationWarning>
+              <span className="block text-[18px] font-bold leading-7 tracking-[-0.5px] text-base-content sm:text-[20px]">বাজার দর</span>
+              <span className="block truncate text-[11px] leading-4 text-base-content/80 sm:text-xs" suppressHydrationWarning>
                 {banglaDate()}
               </span>
             </span>
           </Link>
-          <AuthArea />
+          <AuthArea initialUser={initialUser} />
         </div>
 
         <nav aria-label="ক্যাটাগরি" className="no-scrollbar -mx-4 overflow-x-auto px-4 pb-3">
@@ -183,7 +199,7 @@ export default function Navbar() {
                     className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-1.5 font-medium transition ${
                       active
                         ? "bg-brand-600 text-white shadow-sm"
-                        : "text-base-content/80 hover:bg-base-200 hover:text-base-content"
+                        : "text-base-content/90 hover:bg-base-200 hover:text-base-content"
                     }`}
                   >
                     <span aria-hidden="true" className="text-[13px] leading-none">{item.icon}</span>

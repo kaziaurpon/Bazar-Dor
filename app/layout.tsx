@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Ticker, { TickerSkeleton } from "@/components/Ticker";
 import ToasterProvider from "@/components/ToasterProvider";
+import { getSession } from "@/lib/session";
 
 /**
  * Browser translators (Chrome Translate, Google Translate extension) and some extensions rewrite the
@@ -30,7 +31,13 @@ export const viewport: Viewport = {
   themeColor: "#05893e",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Read the session on the server so the navbar is correct on first paint (no flash of buttons / avatar).
+  const session = await getSession().catch(() => null);
+  const user = session?.user
+    ? { name: session.user.name, email: session.user.email, image: session.user.image ?? null }
+    : null;
+
   return (
     <html lang="bn" translate="no" data-theme="bazar" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
@@ -44,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="notranslate flex min-h-screen flex-col" suppressHydrationWarning>
-        <Navbar />
+        <Navbar initialUser={user} />
         <Suspense fallback={<TickerSkeleton />}>
           <Ticker />
         </Suspense>
