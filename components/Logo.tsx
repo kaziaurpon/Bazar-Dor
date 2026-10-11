@@ -1,11 +1,14 @@
+/**
+ * Logo mark from the Figma: a green rounded square with the 🛒 emoji.
+ * The emoji is a vector glyph, so it stays sharp on every screen (the old 18×18 px PNG got blurry).
+ */
 export default function LogoMark({ className = "size-10" }: { className?: string }) {
   return (
     <span
-      className={`grid shrink-0 place-items-center rounded-xl bg-primary shadow-sm ${className}`}
+      className={`grid shrink-0 place-items-center rounded-xl bg-primary ${className}`}
       aria-hidden="true"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo-icon.png" alt="" width={18} height={18} className="size-[18px] brightness-0 invert" />
+      <span className="text-[18px] leading-none">🛒</span>
     </span>
   );
 }
